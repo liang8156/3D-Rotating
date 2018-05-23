@@ -1,0 +1,129 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文</title>
+    <style type="text/css">
+        div {
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+
+
+        function point(x, y) {
+            var oDiv = document.createElement('div');
+            oDiv.style.position = 'absolute';
+            oDiv.style.height = '2px';
+            oDiv.style.width = '2px';
+            oDiv.style.backgroundColor = 'red';
+            oDiv.style.left = x + 'px';
+            oDiv.style.top = y + 'px';
+            //document.body.appendChild(oDiv);
+            return oDiv;
+        }
+        function drawLine(x1, y1, x2, y2) {
+            var x = x2 - x1;
+            var y = y2 - y1;
+            var frag = document.createDocumentFragment();
+            if (Math.abs(y) > Math.abs(x)) {
+                if (y > 0)
+                    for (var i = 0; i < y; i++) {
+                        var width = x / y * i
+                        {
+                            frag.appendChild(point(width + x1, i + y1));
+                        }
+                    }
+                if (y < 0) {
+                    for (var i = 0; i > y; i--) {
+                        var width = x / y * i
+                        {
+                            frag.appendChild(
+                                point(width + x1, i + y1));
+                        }
+                    }
+                }
+            }//end if
+            else {
+                if (x > 0)
+                    for (var i = 0; i < x; i++) {
+                        var height = y / x * i
+                        {
+                            frag.appendChild(point(i + x1, height + y1));
+                        }
+                    }
+                if (x < 0) {
+                    for (var i = 0; i > x; i--) {
+                        var height = y / x * i
+                        {
+                            frag.appendChild(
+                                point(i + x1, height + y1));
+                        }
+                    }
+                }//end if
+            }
+            //document.body.appendChild(frag);
+            document.getElementById('div1').appendChild(frag);
+            //var oDiv=document.createElement('div')
+            //oDiv.appendChild(frag);
+            //document.body.appendChild(oDiv);
+        }
+        function drawCircle() {//???
+            var r = 200;
+            var x1 = 300;
+            var y1 = 300;
+            var frag = document.createDocumentFragment();
+            for (var degree = 0; degree < 360; degree += 2) {
+                var x2 = r * Math.sin(degree * Math.PI / 180);
+                var y2 = r * Math.cos(degree * Math.PI / 180);
+                frag.appendChild(point(x1 + x2, y1 + y2));
+            }
+            document.body.appendChild(frag);
+        }
+        function dragCircle(x1, y1, x2, y2) {
+            var r = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            var frag = document.createDocumentFragment();
+            for (var degree = 0; degree < 360; degree += 2) {
+                var x2 = r * Math.sin(degree * Math.PI / 180);
+                var y2 = r * Math.cos(degree * Math.PI / 180);
+                frag.appendChild(point(x1 + x2, y1 + y2));
+            }
+            document.getElementById('div1').appendChild(frag);
+        }
+        window.onload = function () {
+            drawCircle()
+            drawLine(500, 30, 0, 30);
+            drawLine(300, 20, 300, 500);
+            drawLine(50, 20, 700, 500);
+            var x1 = 0;
+            var y1 = 0;
+
+            function down(e) {
+                var e = e || window.event;
+                x1 = e.clientX;
+                y1 = e.clientY;
+                document.onmousemove = move;
+                document.onmouseup = up;
+            }
+            function move(e) {
+                document.getElementById('div1').innerHTML = '';
+                var e = e || window.event;
+                var x2 = e.clientX;
+                var y2 = e.clientY;
+                drawLine(x1, y1, x2, y2);
+                dragCircle(x1, y1, x2, y2);
+            }
+            function up() {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+            document.onmousedown = down;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1">在器上拖鼠</div>
+</body>
+
+</html>
