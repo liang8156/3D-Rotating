@@ -6,17 +6,50 @@ var x = 0, y = 0;
 //     inputs[i].onclick = run;
 // }
 function run(index) {
-    ul.style.webkitTransition = '-webkit-transform 3s linear';  //設置立方體變換的屬性、持續時間、動畫類型
-    if (index === '0') { x += 90; }
-    if (index === '1') { y += 90; }
-    if (index === '2') { y -= 90; }
-    if (index === '3') { x -= 90; }
-    if (index === '4') { x = 0; y = 0; ul.style.webkitTransition = '-webkit-transform 0.1s linear'; }    //當點擊重置按鈕時，迅速轉回到初始狀態。
+    ul.style.webkitTransition = 'transform 3s linear';  //設置立方體變換的屬性、持續時間、動畫類型
+    switch (index) {
+        case 'top': x += 90;
+            break;
+        case 'right': y += 90;
+            break;
+        case 'letf': y -= 90;
+            break;
+        case 'bot': x -= 90;
+            break;
+        case 'reset':
+            x = 0; y = 0;    //迅速轉回初始狀態
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+        case '1':
+            x = -90; y = 0;
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+        case '2':
+            x = 90; y = 0;
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+        case '3':
+            x = 0; y = -90;
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+        case '4':
+            x = 0; y = 90;
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+        case '5':
+            x = 0; y = -180;
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+        case '6':
+            x = 0; y = 0;
+            ul.style.webkitTransition = 'transform 0.1s linear';
+            break;
+    }
     ul.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";    //變換效果（沿X軸和Y軸旋轉）
 }
 ////////////////////////鍵盤控制    
 document.addEventListener('keydown', function (e) {
-    ul.style.webkitTransition = '-webkit-transform 3s linear';
+    ul.style.webkitTransition = 'transform 3s linear';
     switch (e.keyCode) {
         case 37: y -= 90;    //左
             break;
@@ -27,7 +60,7 @@ document.addEventListener('keydown', function (e) {
         case 40: x -= 90;    //下
             break;
         case 13: x = 0; y = 0;    //迅速轉回初始狀態
-            ul.style.webkitTransition = '-webkit-transform 0.1s linear';
+            ul.style.webkitTransition = 'transform 0.1s linear';
             break;
     }
     ul.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)"; //變換效果（沿X軸和Y軸旋轉）
@@ -46,10 +79,11 @@ function move(e) {
     var e = e || window.event;
     var x2 = e.clientX;
     var y2 = e.clientY;
-    //console.log("x2,y2", x2, y2)
-    ul.style.webkitTransition = '-webkit-transform 0s linear';
-    x += (x2 - x1) * 0.5;
-    y += (y2 - y1) * 0.5;
+
+    console.log("x2,y2", x2, y2)
+    ul.style.webkitTransition = 'transform 0s linear';
+    y += (x2 - x1) * 0.5; // x軸的差為旋轉y軸
+    x += -(y2 - y1) * 0.5; // y軸的差為旋轉x軸
     console.log("x,y", x, y)
     ul.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
 
