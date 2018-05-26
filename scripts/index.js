@@ -1,10 +1,6 @@
 var ul = document.getElementById('ul');
 var inputs = document.getElementsByTagName('input');
 var x = 0, y = 0;
-/////////////////////////鼠標控制
-// for (var i = 0; i < inputs.length; i++) {
-//     inputs[i].onclick = run;
-// }
 function run(index) {
     ul.style.webkitTransition = 'transform 3s linear';  //設置立方體變換的屬性、持續時間、動畫類型
     switch (index) {
@@ -12,7 +8,7 @@ function run(index) {
             break;
         case 'right': y += 90;
             break;
-        case 'letf': y -= 90;
+        case 'left': y -= 90;
             break;
         case 'bot': x -= 90;
             break;
@@ -75,7 +71,6 @@ function down(e) {
     console.log("x1,y1", x1, y1)
 }
 function move(e) {
-    document.getElementById('div1').innerHTML = '';
     var e = e || window.event;
     var x2 = e.clientX;
     var y2 = e.clientY;
@@ -94,4 +89,13 @@ function up() {
 }
 document.onmousedown = down;
 
-
+let buttonElement = ["top", "bot", "left", "right", "reset"]
+let buttonElementName = ["上", "下", "左", "右", "重置"]
+for (let i = 0; i < buttonElement.length; i++) {
+    console.log(buttonElement[i])
+    var calelem = document.createElement("button");
+    calelem.setAttribute("class", "button" + buttonElement[i]);
+    calelem.setAttribute('onclick', "run('" + buttonElement[i] + "')");
+    calelem.innerHTML = buttonElementName[i];
+    document.getElementById("operationButton").appendChild(calelem);
+}

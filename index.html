@@ -15,7 +15,6 @@
 
 
 <body>
-  <div id="div1">在器上拖鼠</div>
   <ul id="ul">
     <li onclick="run('1')">1</li>
     <li onclick="run('2')">2</li>
@@ -24,13 +23,8 @@
     <li onclick="run('5')">5</li>
     <li onclick="run('6')">6</li>
   </ul>
-  <div class="button">
-    <input type="button" value="上" onclick="run('top')">
-    <input type="button" value="右" onclick="run('right')">
-    <input type="button" value="左" onclick="run('letf')">
-    <input type="button" value="下" onclick="run('bot')">
-    <input type="button" value="重置" onclick="run('reset')">
-  </div>
+  <div id="operationButton" class="button" />
+
   <!-- Scripts -->
   <script src="scripts/index.js"></script>
 </body>

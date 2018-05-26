@@ -37,17 +37,31 @@
     transform: translateZ(100px) ;}
 
     
-  .button{width:200px;margin:20px auto;position:relative;}
-  input{width:50px;height:30px;position:absolute;cursor:pointer;}
-  input:nth-child(1){left:100px;top:0;}
-  input:nth-child(2){left:200px;top:50px;}
-  input:nth-child(3){left:0px;top:50px;}
-  input:nth-child(4){left:100px;top:100px;}
-  input:nth-child(5){left:100px;top:50px;}
-          /*****當執行下列css時，立方體無限自由旋轉******/
+  .button{width:250px;margin:20px auto;position:relative;}
+  .buttontop{
+    width:50px;height:30px;position:absolute;cursor:pointer;
+    left:100px;top:0
+  }
+  .buttonright{
+    width:50px;height:30px;position:absolute;cursor:pointer;
+    left:200px;top:50px;
+  }
+  .buttonleft{
+    width:50px;height:30px;position:absolute;cursor:pointer;
+    left:0px;top:50px;
+  }
+  .buttonbot{
+    width:50px;height:30px;position:absolute;cursor:pointer;
+    left:100px;top:100px;
+  }
+  .buttonreset{
+    width:50px;height:30px;position:absolute;cursor:pointer;
+    left:100px;top:50px;
+  }
+
+            /*****當執行下列css時，立方體無限自由旋轉******/
   /* ul{-webkit-animation:run 5s linear infinite ;}    
   @-webkit-keyframes run{
       0%{-webkit-transform: rotateX(0deg) rotateY(0deg) }
       100%{-webkit-transform:rotateX(360deg)  rotateY(360deg)  }
   } */
- 
