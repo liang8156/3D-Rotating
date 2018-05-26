@@ -77,8 +77,8 @@ function move(e) {
 
     console.log("x2,y2", x2, y2)
     ul.style.webkitTransition = 'transform 0s linear';
-    y += (x2 - x1) * 0.5; // x軸的差為旋轉y軸
-    x += -(y2 - y1) * 0.5; // y軸的差為旋轉x軸
+    y += (x2 - x1) * 0.1; // x軸的差為旋轉y軸
+    x += -(y2 - y1) * 0.1; // y軸的差為旋轉x軸
     console.log("x,y", x, y)
     ul.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
 
