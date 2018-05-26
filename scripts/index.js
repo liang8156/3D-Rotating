@@ -99,3 +99,11 @@ for (let i = 0; i < buttonElement.length; i++) {
     calelem.innerHTML = buttonElementName[i];
     document.getElementById("operationButton").appendChild(calelem);
 }
+
+for (let i = 1; i <= 6; i++) {
+    console.log(i)
+    var a = document.createElement("li");
+    a.setAttribute('onclick', "run('" + i + "')");
+    a.innerHTML = +i;
+    document.getElementById("ul").appendChild(a);
+}

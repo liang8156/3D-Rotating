@@ -1,14 +1,12 @@
 
-  * { padding: 0; margin: 0; }img{border:0;}li{list-style:none;}
-
   ul{width:200px;
     height:200px;
     margin:100px auto;
     position:relative;
     transform-style:preserve-3d;
     }    
-      /*如果在ul裏設置：-webkit-perspective:400px;-webkit-perspective-origin:0% 50%; 則會有透視、景深的效果*/
   li{
+    list-style:none;
     width:200px;
     height:200px;
     position:absolute;
@@ -37,25 +35,25 @@
     transform: translateZ(100px) ;}
 
     
-  .button{width:250px;margin:20px auto;position:relative;}
+  .button{width:200px;margin:20px auto;position:relative;}
   .buttontop{
-    width:50px;height:30px;position:absolute;cursor:pointer;
+    width:50px;height:30px;position:absolute;
     left:100px;top:0
   }
   .buttonright{
-    width:50px;height:30px;position:absolute;cursor:pointer;
+    width:50px;height:30px;position:absolute;
     left:200px;top:50px;
   }
   .buttonleft{
-    width:50px;height:30px;position:absolute;cursor:pointer;
+    width:50px;height:30px;position:absolute;
     left:0px;top:50px;
   }
   .buttonbot{
-    width:50px;height:30px;position:absolute;cursor:pointer;
+    width:50px;height:30px;position:absolute;
     left:100px;top:100px;
   }
   .buttonreset{
-    width:50px;height:30px;position:absolute;cursor:pointer;
+    width:50px;height:30px;position:absolute;
     left:100px;top:50px;
   }
 
